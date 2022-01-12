@@ -12,13 +12,13 @@ function App() {
       gutterBottom
       variant="h2"
       align='center'>
-        Resturent App
+        Resturent App hhh
       </Typography>
 
       <Order />
       <Form />
       <Input />
-      
+
     </Container>
    
   );
