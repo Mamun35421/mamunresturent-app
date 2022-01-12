@@ -1,7 +1,9 @@
 import React ,{useState}from 'react'
 import Form from '../../layouts/Form'
-import { Grid } from '@material-ui/core'
+import { ButtonGroup, Button as MuiButton,Grid, InputAdornment,makeStyles } from '@material-ui/core'
 import {Input,Select,Button} from "../../controls"
+import ReplayIcon from '@material-ui/icons/Replay';
+import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu';
 
 
 const pMethods = [
@@ -9,6 +11,16 @@ const pMethods = [
     {id:'Cash', title: 'Cash'},
     {id:'Card', title: 'Card'},
 ]
+
+const useStyles = makeStyles(theme => ({
+    adornmentText: {
+        '& .MuiTypography-root':{
+            color:'#f3b33d',
+            fontWeight:'bolder',
+            fontSize:  '1.5em'
+        }
+    }
+}))
 
 const generateOrderNumber = () => Math.floor(100000 + Math.random() * 900000).toString();
 
@@ -30,6 +42,7 @@ const getFreshModelObject = () =>({
 export default function OrderForm() {
 
     const [values,setValues]  = useState(getFreshModelObject());
+    const classes = useStyles()
     
     return (
         <Form>
@@ -40,6 +53,11 @@ export default function OrderForm() {
                     label="Order Number"
                     name = "Order Number"
                     value = {values.orderNumber}
+                    InputProps={{
+                        startAdornment: <InputAdornment
+                        className={classes.adornmentText}
+                        position="start">#</InputAdornment>
+                    }}
                     />
 
                     <Select 
@@ -66,7 +84,23 @@ export default function OrderForm() {
                     label="Grand Total"
                     name = "gTotal"
                     value = {values.gTotal}
+                    InputProps={{
+                        startAdornment: <InputAdornment
+                        className={classes.adornmentText}
+                        position="start">$</InputAdornment>
+                    }}
                     />
+                    <ButtonGroup>
+                         <MuiButton 
+                         size="large"
+                         endIcon = {<RestaurantMenuIcon />}
+                         type="Submit">Submit</MuiButton>
+
+                         <MuiButton
+                         size='small'
+                         startIcon={<ReplayIcon />}
+                         />
+                    </ButtonGroup>
                 </Grid>
 
             </Grid>
