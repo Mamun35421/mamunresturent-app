@@ -10,15 +10,19 @@ export default function orderForm() {
         <Form>
             <Grid container>
                 <Grid item xs={6}>
-                    <Input 
-
+                    <Input
+                    disabled  
                     label="Order Number"
                     name = "Order Number"
                     />
 
                 </Grid>
                 <Grid item xs={6}>
-
+                <Input
+                    disabled  
+                    label="Grand Total"
+                    name = "gTotal"
+                    />
                 </Grid>
 
             </Grid>

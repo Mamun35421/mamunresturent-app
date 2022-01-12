@@ -4,7 +4,7 @@ import {Container, Typography} from "@material-ui/core"
 import Order from './Components/Order/orderForm';
 
 import Form from './layouts/Form';
-import Input from './controls/input';
+
 
 function App() {
   return (
@@ -13,12 +13,12 @@ function App() {
       gutterBottom
       variant="h2"
       align='center'>
-        Resturent App hhh
+        Restaurant App
       </Typography>
 
       <Order />
       <Form />
-      <Input />
+      
 
     </Container>
    
