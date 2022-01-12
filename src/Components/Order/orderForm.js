@@ -1,8 +1,7 @@
-import React from 'react'
+import React ,{useState}from 'react'
 import Form from '../../layouts/Form'
 import { Grid } from '@material-ui/core'
-import Input from '../../controls/input'
-import Select from '../../controls/select'
+import {Input,Select,Button} from "../../controls"
 
 
 const pMethods = [
@@ -11,9 +10,27 @@ const pMethods = [
     {id:'Card', title: 'Card'},
 ]
 
+const generateOrderNumber = () => Math.floor(100000 + Math.random() * 900000).toString();
+
+const getFreshModelObject = () =>({
+    orderMasterId : 0,
+    orderNumber : generateOrderNumber(),
+    customerId  : 0,
+    pMethod : 'none',
+    gTotal : 0,
+    deletedOrderItemId: '',
+    orderDetails : []
 
 
-export default function orderForm() {
+
+})
+
+
+
+export default function OrderForm() {
+
+    const [values,setValues]  = useState(getFreshModelObject());
+    
     return (
         <Form>
             <Grid container>
@@ -22,6 +39,7 @@ export default function orderForm() {
                     disabled  
                     label="Order Number"
                     name = "Order Number"
+                    value = {values.orderNumber}
                     />
 
                     <Select 
@@ -39,13 +57,15 @@ export default function orderForm() {
                 <Grid item xs={6}>
                 <Select 
                     label="Payment Method"
-                    name="PmETHOD"
+                    name="pMethod"
                     options={pMethods}
+                    value = {values.pMethod}
             />
                 <Input
                     disabled  
                     label="Grand Total"
                     name = "gTotal"
+                    value = {values.gTotal}
                     />
                 </Grid>
 
